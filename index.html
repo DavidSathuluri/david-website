@@ -1,951 +1,183 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>David Sathuluri | Climate Justice & AI Governance</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Official website of David Sathuluri, a climate justice and AI governance researcher and policy advocate based in New York.">
-  <style>
-    :root {
-      --bg: #06121f;
-      --bg-alt: #0d2236;
-      --accent: #d4a44a;
-      --accent-soft: #f1d9a5;
-      --text: #f7f3ea;
-      --muted: #c2c7d0;
-      --tile-blue: #1c3a4d;
-      --tile-turquoise: #1c7f7a;
-      --max-width: 1000px;
-    }
-
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
-    body {
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      background: radial-gradient(circle at top, #1c3a4d 0, #020713 55%, #000000 100%);
-      color: var(--text);
-      line-height: 1.7;
-    }
-
-    a {
-      color: var(--accent-soft);
-      text-decoration: none;
-    }
-
-    a:hover {
-      text-decoration: underline;
-    }
-
-    header {
-      border-bottom: 1px solid rgba(212,164,74,0.4);
-      background: linear-gradient(135deg, rgba(4,18,35,0.95), rgba(14,44,70,0.95));
-      box-shadow: 0 10px 30px rgba(0,0,0,0.6);
-      position: sticky;
-      top: 0;
-      z-index: 50;
-      backdrop-filter: blur(14px);
-    }
-
-    .nav-container {
-      max-width: var(--max-width);
-      margin: 0 auto;
-      padding: 0.75rem 1.5rem;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
-
-    .logo-mark {
-      display: flex;
-      align-items: center;
-      gap: 0.6rem;
-    }
-
-    .logo-symbol {
-      width: 32px;
-      height: 32px;
-      background:
-        radial-gradient(circle at 30% 30%, rgba(241,217,165,0.75), transparent 60%),
-        radial-gradient(circle at 70% 70%, rgba(28,127,122,0.9), transparent 55%);
-      border-radius: 50%;
-      border: 2px solid rgba(212,164,74,0.9);
-      box-shadow: 0 0 10px rgba(212,164,74,0.8);
-      position: relative;
-      overflow: hidden;
-    }
-
-    .logo-symbol::before,
-    .logo-symbol::after {
-      content: "";
-      position: absolute;
-      inset: 18%;
-      border-radius: 50%;
-      border: 1px solid rgba(247,243,234,0.35);
-    }
-
-    .logo-symbol::after {
-      inset: 35%;
-      border-color: rgba(212,164,74,0.6);
-    }
-
-    .logo-text-main {
-      font-family: "Georgia", "Times New Roman", serif;
-      letter-spacing: 0.06em;
-      font-size: 0.95rem;
-      text-transform: uppercase;
-      color: var(--accent-soft);
-    }
-
-    .logo-text-sub {
-      font-size: 0.7rem;
-      text-transform: uppercase;
-      letter-spacing: 0.16em;
-      color: var(--muted);
-    }
-
-    nav ul {
-      display: flex;
-      gap: 1.2rem;
-      list-style: none;
-      font-size: 0.85rem;
-      text-transform: uppercase;
-      letter-spacing: 0.14em;
-    }
-
-    nav a {
-      color: var(--muted);
-      position: relative;
-      padding-bottom: 0.15rem;
-    }
-
-    nav a::after {
-      content: "";
-      position: absolute;
-      left: 0;
-      bottom: 0;
-      width: 0;
-      height: 1px;
-      background: linear-gradient(90deg, var(--accent), var(--accent-soft));
-      transition: width 0.25s ease;
-    }
-
-    nav a:hover::after {
-      width: 100%;
-    }
-
-    main {
-      max-width: var(--max-width);
-      margin: 0 auto;
-      padding: 2rem 1.5rem 3rem;
-    }
-
-    .hero {
-      margin-top: 1.5rem;
-      padding: 2.5rem 1.75rem 2.75rem;
-      border-radius: 24px;
-      background:
-        radial-gradient(circle at 0% 0%, rgba(241,217,165,0.12), transparent 60%),
-        radial-gradient(circle at 100% 100%, rgba(28,127,122,0.18), transparent 55%),
-        linear-gradient(135deg, rgba(4,18,35,0.98), rgba(10,35,56,0.98));
-      border: 1px solid rgba(212,164,74,0.55);
-      box-shadow:
-        0 24px 60px rgba(0,0,0,0.85),
-        0 0 0 1px rgba(241,217,165,0.07);
-      position: relative;
-      overflow: hidden;
-    }
-
-    .hero::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background-image:
-        radial-gradient(circle at 10% 20%, rgba(248,234,202,0.12) 0, transparent 60%),
-        radial-gradient(circle at 80% 0%, rgba(43,148,141,0.18) 0, transparent 55%),
-        radial-gradient(circle at 90% 90%, rgba(241,217,165,0.18) 0, transparent 55%);
-      opacity: 0.7;
-      pointer-events: none;
-    }
-
-    .hero-inner {
-      position: relative;
-      display: grid;
-      grid-template-columns: minmax(0, 3fr) minmax(0, 2.5fr);
-      gap: 2rem;
-      align-items: center;
-    }
-
-    .hero-tag {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.4rem;
-      padding: 0.2rem 0.7rem;
-      border-radius: 999px;
-      border: 1px solid rgba(241,217,165,0.55);
-      background: radial-gradient(circle at 0 0, rgba(241,217,165,0.25), rgba(8,25,43,0.9));
-      font-size: 0.7rem;
-      letter-spacing: 0.16em;
-      text-transform: uppercase;
-      color: var(--accent-soft);
-      margin-bottom: 0.9rem;
-    }
-
-    .hero-tag span {
-      width: 6px;
-      height: 6px;
-      border-radius: 50%;
-      background: var(--accent);
-      box-shadow: 0 0 12px rgba(241,217,165,0.9);
-    }
-
-    .hero h1 {
-      font-family: "Georgia", "Times New Roman", serif;
-      font-size: clamp(1.9rem, 3vw, 2.3rem);
-      letter-spacing: 0.04em;
-      margin-bottom: 0.35rem;
-    }
-
-    .hero-role {
-      text-transform: uppercase;
-      letter-spacing: 0.18em;
-      font-size: 0.75rem;
-      color: var(--accent-soft);
-      margin-bottom: 1.4rem;
-    }
-
-    .hero p {
-      color: var(--muted);
-      font-size: 0.95rem;
-      max-width: 32rem;
-      margin-bottom: 1.4rem;
-    }
-
-    .hero-meta {
-      font-size: 0.8rem;
-      color: var(--muted);
-      text-transform: uppercase;
-      letter-spacing: 0.18em;
-      display: flex;
-      gap: 1.5rem;
-      flex-wrap: wrap;
-    }
-
-    .hero-meta span::before {
-      content: "• ";
-      color: var(--accent-soft);
-    }
-
-    .hero-actions {
-      margin-top: 1.6rem;
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.8rem;
-    }
-
-    .btn-primary,
-    .btn-ghost {
-      border-radius: 999px;
-      padding: 0.55rem 1.35rem;
-      font-size: 0.8rem;
-      letter-spacing: 0.16em;
-      text-transform: uppercase;
-      border: 1px solid transparent;
-      cursor: pointer;
-      transition: all 0.2s ease;
-    }
-
-    .btn-primary {
-      background: linear-gradient(120deg, var(--accent), #f1d9a5);
-      color: #211509;
-      border-color: rgba(241,217,165,0.8);
-      box-shadow: 0 8px 20px rgba(0,0,0,0.7);
-    }
-
-    .btn-primary:hover {
-      transform: translateY(-1px);
-      box-shadow: 0 10px 26px rgba(0,0,0,0.9);
-      filter: brightness(1.02);
-    }
-
-    .btn-ghost {
-      background: rgba(4,18,35,0.7);
-      border-color: rgba(241,217,165,0.4);
-      color: var(--accent-soft);
-    }
-
-    .btn-ghost:hover {
-      background: rgba(241,217,165,0.06);
-    }
-
-    .hero-pattern-card {
-      border-radius: 20px;
-      padding: 1.2rem;
-      background:
-        conic-gradient(from 0deg, rgba(241,217,165,0.07), rgba(28,127,122,0.08), rgba(10,35,56,0.9), rgba(241,217,165,0.13)),
-        radial-gradient(circle at 10% 20%, rgba(241,217,165,0.25), transparent 55%);
-      border: 1px solid rgba(241,217,165,0.5);
-      box-shadow: 0 18px 40px rgba(0,0,0,0.9);
-      position: relative;
-      overflow: hidden;
-    }
-
-    .arch-frame {
-      border-radius: 18px 18px 40px 40px;
-      padding: 0.9rem;
-      border: 1px solid rgba(241,217,165,0.9);
-      background:
-        radial-gradient(circle at 50% -20%, rgba(241,217,165,0.35), transparent 55%),
-        linear-gradient(180deg, rgba(4,18,35,0.2), rgba(4,18,35,0.96));
-      position: relative;
-      overflow: hidden;
-    }
-
-    .arch-inner {
-      border-radius: 14px 14px 32px 32px;
-      border: 1px solid rgba(212,164,74,0.7);
-      padding: 1.1rem;
-      position: relative;
-      overflow: hidden;
-      background:
-        radial-gradient(circle at 20% 0%, rgba(241,217,165,0.25), transparent 55%),
-        radial-gradient(circle at 80% 90%, rgba(28,127,122,0.25), transparent 55%),
-        linear-gradient(180deg, rgba(3,14,26,0.4), rgba(2,10,20,0.96));
-    }
-
-    .arch-inner::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background-image:
-        radial-gradient(circle at 50% 0%, transparent 60%, rgba(3,10,20,1) 80%),
-        repeating-conic-gradient(
-          from 0deg,
-          rgba(241,217,165,0.18) 0 8deg,
-          rgba(241,217,165,0.02) 8deg 16deg
-        );
-      mix-blend-mode: soft-light;
-      opacity: 0.9;
-      pointer-events: none;
-    }
-
-    .arch-inner::after {
-      content: "";
-      position: absolute;
-      inset: 8%;
-      border-radius: 50% 50% 44% 44%;
-      border: 1px solid rgba(241,217,165,0.28);
-      box-shadow: 0 0 30px rgba(241,217,165,0.4);
-      pointer-events: none;
-    }
-
-    .arch-top {
-      height: 120px;
-      border-radius: 50% 50% 0 0;
-      border: 1px solid rgba(241,217,165,0.6);
-      margin-bottom: 0.8rem;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .arch-top::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background:
-        radial-gradient(circle at 50% 0%, rgba(241,217,165,0.95), transparent 55%),
-        radial-gradient(circle at 20% 40%, rgba(28,127,122,0.8), transparent 45%),
-        radial-gradient(circle at 80% 60%, rgba(4,18,35,0.9), transparent 55%);
-      mix-blend-mode: screen;
-      opacity: 0.95;
-    }
-
-    .arch-top-grid {
-      position: absolute;
-      inset: 10% 12% 14%;
-      background-image:
-        linear-gradient(to right, rgba(4,18,35,0.7) 1px, transparent 1px),
-        linear-gradient(to bottom, rgba(4,18,35,0.7) 1px, transparent 1px);
-      background-size: 14px 14px;
-      opacity: 0.55;
-    }
-
-    .arch-top-star {
-      position: absolute;
-      top: 48%;
-      left: 50%;
-      width: 46px;
-      height: 46px;
-      transform: translate(-50%, -50%);
-      background:
-        radial-gradient(circle at 50% 50%, rgba(241,217,165,1), rgba(241,217,165,0.05));
-      clip-path: polygon(
-        50% 0%, 61% 35%, 98% 35%, 68% 57%,
-        79% 91%, 50% 70%, 21% 91%, 32% 57%,
-        2% 35%, 39% 35%
-      );
-      box-shadow:
-        0 0 20px rgba(241,217,165,0.9),
-        0 0 40px rgba(241,217,165,0.6);
-    }
-
-    .arch-label {
-      font-size: 0.7rem;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      text-align: center;
-      color: var(--accent-soft);
-      margin-bottom: 0.7rem;
-    }
-
-    .arch-title {
-      text-align: center;
-      font-family: "Georgia", "Times New Roman", serif;
-      font-size: 1.1rem;
-      letter-spacing: 0.16em;
-      text-transform: uppercase;
-      margin-bottom: 0.5rem;
-    }
-
-    .arch-subtitle {
-      text-align: center;
-      font-size: 0.78rem;
-      color: var(--muted);
-      letter-spacing: 0.16em;
-      text-transform: uppercase;
-      margin-bottom: 1rem;
-    }
-
-    .arch-pill-row {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 0.35rem;
-      margin-bottom: 0.85rem;
-    }
-
-    .arch-pill {
-      font-size: 0.68rem;
-      padding: 0.15rem 0.55rem;
-      border-radius: 999px;
-      border: 1px solid rgba(241,217,165,0.6);
-      background: rgba(4,18,35,0.9);
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      color: var(--accent-soft);
-    }
-
-    .arch-footer-note {
-      text-align: center;
-      font-size: 0.7rem;
-      color: var(--muted);
-      border-top: 1px solid rgba(241,217,165,0.4);
-      padding-top: 0.7rem;
-      margin-top: 0.6rem;
-    }
-
-    .section {
-      margin-top: 2.4rem;
-      padding: 1.9rem 1.6rem;
-      border-radius: 20px;
-      border: 1px solid rgba(241,217,165,0.25);
-      background:
-        radial-gradient(circle at 0 0, rgba(241,217,165,0.12), transparent 55%),
-        linear-gradient(135deg, rgba(5,18,34,0.96), rgba(3,12,24,0.98));
-      box-shadow: 0 18px 42px rgba(0,0,0,0.9);
-      position: relative;
-      overflow: hidden;
-    }
-
-    .section::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background-image:
-        radial-gradient(circle at 0 0, rgba(241,217,165,0.12), transparent 60%),
-        radial-gradient(circle at 100% 100%, rgba(28,127,122,0.17), transparent 60%);
-      opacity: 0.7;
-      pointer-events: none;
-    }
-
-    .section-inner {
-      position: relative;
-    }
-
-    .section-heading {
-      display: flex;
-      align-items: baseline;
-      justify-content: space-between;
-      gap: 1rem;
-      margin-bottom: 1.1rem;
-      border-bottom: 1px solid rgba(241,217,165,0.3);
-      padding-bottom: 0.7rem;
-    }
-
-    .section-title {
-      font-family: "Georgia", "Times New Roman", serif;
-      font-size: 1.1rem;
-      letter-spacing: 0.16em;
-      text-transform: uppercase;
-    }
-
-    .section-kicker {
-      font-size: 0.7rem;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      color: var(--muted);
-    }
-
-    .text-body {
-      font-size: 0.9rem;
-      color: var(--muted);
-      max-width: 46rem;
-    }
-
-    .text-body p + p {
-      margin-top: 0.6rem;
-    }
-
-    .pill-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.35rem;
-      margin-top: 0.75rem;
-    }
-
-    .pill {
-      font-size: 0.7rem;
-      padding: 0.12rem 0.55rem;
-      border-radius: 999px;
-      border: 1px solid rgba(241,217,165,0.35);
-      color: var(--accent-soft);
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      background: rgba(4,18,35,0.9);
-    }
-
-    .two-column {
-      display: grid;
-      grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr);
-      gap: 1.8rem;
-      margin-top: 0.75rem;
-      font-size: 0.9rem;
-      color: var(--muted);
-    }
-
-    .list-heading {
-      font-size: 0.75rem;
-      text-transform: uppercase;
-      letter-spacing: 0.16em;
-      color: var(--accent-soft);
-      margin-bottom: 0.2rem;
-    }
-
-    ul {
-      list-style: none;
-      padding-left: 0;
-    }
-
-    li {
-      margin-bottom: 0.35rem;
-    }
-
-    li span.bullet {
-      color: var(--accent-soft);
-      margin-right: 0.35rem;
-    }
-
-    .highlight-card {
-      border-radius: 16px;
-      padding: 0.9rem 1rem;
-      border: 1px solid rgba(241,217,165,0.38);
-      background:
-        linear-gradient(135deg, rgba(241,217,165,0.14), rgba(4,18,35,0.96));
-      margin-top: 0.6rem;
-      font-size: 0.85rem;
-      color: var(--text);
-    }
-
-    .highlight-card strong {
-      color: var(--accent-soft);
-      font-weight: 600;
-    }
-
-    .section-grid {
-      display: grid;
-      grid-template-columns: minmax(0, 1.5fr) minmax(0, 1.2fr);
-      gap: 1.6rem;
-      margin-top: 0.75rem;
-    }
-
-    .entry-list {
-      font-size: 0.86rem;
-      color: var(--muted);
-    }
-
-    .entry {
-      margin-bottom: 0.85rem;
-    }
-
-    .entry-title {
-      color: var(--text);
-      font-weight: 500;
-    }
-
-    .entry-meta {
-      font-size: 0.75rem;
-      text-transform: uppercase;
-      letter-spacing: 0.14em;
-      color: var(--accent-soft);
-      margin-top: 0.1rem;
-    }
-
-    .entry-desc {
-      margin-top: 0.25rem;
-    }
-
-    .entry-tags {
-      margin-top: 0.3rem;
-    }
-
-    .entry-tags span {
-      font-size: 0.7rem;
-      padding: 0.1rem 0.45rem;
-      border-radius: 999px;
-      border: 1px solid rgba(241,217,165,0.34);
-      margin-right: 0.25rem;
-      color: var(--accent-soft);
-      text-transform: uppercase;
-      letter-spacing: 0.12em;
-    }
-
-    .contact-grid {
-      display: grid;
-      grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr);
-      gap: 1.6rem;
-      margin-top: 0.9rem;
-      font-size: 0.88rem;
-      color: var(--muted);
-    }
-
-    .contact-list a {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.4rem;
-      margin-bottom: 0.45rem;
-      color: var(--accent-soft);
-      font-size: 0.86rem;
-    }
-
-    .contact-list a::before {
-      content: "↗";
-      font-size: 0.75rem;
-      color: var(--accent-soft);
-    }
-
-    .footer-note {
-      margin-top: 1.4rem;
-      padding-top: 0.75rem;
-      border-top: 1px solid rgba(241,217,165,0.28);
-      font-size: 0.72rem;
-      text-transform: uppercase;
-      letter-spacing: 0.16em;
-      color: var(--muted);
-    }
-
-    footer {
-      border-top: 1px solid rgba(212,164,74,0.4);
-      margin-top: 2.4rem;
-      padding: 1.4rem 1.5rem 2.4rem;
-      background: radial-gradient(circle at 50% -40%, rgba(241,217,165,0.18), rgba(4,18,35,1));
-    }
-
-    .footer-inner {
-      max-width: var(--max-width);
-      margin: 0 auto;
-      font-size: 0.8rem;
-      color: var(--muted);
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.6rem;
-      justify-content: space-between;
-    }
-
-    .footer-inner span {
-      text-transform: uppercase;
-      letter-spacing: 0.18em;
-    }
-
-    @media (max-width: 768px) {
-      nav ul {
-        display: none;
-      }
-
-      .hero-inner {
-        grid-template-columns: 1fr;
-      }
-
-      .hero {
-        padding: 2rem 1.2rem 2.2rem;
-      }
-
-      .hero-pattern-card {
-        order: -1;
-      }
-
-      .section {
-        padding: 1.6rem 1.2rem;
-      }
-
-      .two-column,
-      .section-grid,
-      .contact-grid {
-        grid-template-columns: 1fr;
-      }
-
-      main {
-        padding: 1.6rem 1.1rem 2.2rem;
-      }
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>David Sathuluri | Research</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+
+<style>
+
+body{
+font-family: 'Inter', sans-serif;
+margin:0;
+background:#ffffff;
+color:#1f2937;
+line-height:1.6;
+}
+
+.container{
+max-width:900px;
+margin:auto;
+padding:40px 20px;
+}
+
+header{
+border-bottom:1px solid #e5e7eb;
+padding-bottom:20px;
+margin-bottom:40px;
+}
+
+nav a{
+margin-right:20px;
+text-decoration:none;
+color:#374151;
+font-weight:500;
+}
+
+nav a:hover{
+color:#2563eb;
+}
+
+h1{
+font-size:36px;
+margin-bottom:5px;
+}
+
+.subtitle{
+color:#6b7280;
+margin-bottom:20px;
+}
+
+section{
+margin-bottom:60px;
+}
+
+.research-card{
+border-left:4px solid #2563eb;
+padding-left:15px;
+margin-bottom:20px;
+}
+
+.blog-post{
+margin-bottom:15px;
+}
+
+footer{
+border-top:1px solid #e5e7eb;
+padding-top:20px;
+color:#6b7280;
+font-size:14px;
+}
+
+</style>
 </head>
+
 <body>
-  <header>
-    <div class="nav-container">
-      <div class="logo-mark">
-        <div class="logo-symbol"></div>
-        <div>
-          <div class="logo-text-main">David Sathuluri</div>
-          <div class="logo-text-sub">Climate Justice & AI Governance</div>
-        </div>
-      </div>
-      <nav>
-        <ul>
-          <li><a href="#about">About</a></li>
-          <li><a href="#research">Research</a></li>
-          <li><a href="#writing">Writing</a></li>
-          <li><a href="#contact">Contact</a></li>
-        </ul>
-      </nav>
-    </div>
-  </header>
 
-  <main>
-    <section class="hero" id="top">
-      <div class="hero-inner">
-        <div>
-          <div class="hero-tag">
-            <span></span> New York · Research · Public Scholarship
-          </div>
-          <h1>Climate justice & AI governance at the edges of power.</h1>
-          <div class="hero-role">Researcher · Writer · Policy Advocate</div>
-          <p>
-            I work at the intersection of artificial intelligence, climate justice, caste and race, ethics, governance, labor rights, and human rights — asking how technological systems entrench or transform inequality.[cite:0]
-          </p>
-          <p>
-            Through interdisciplinary research and public-facing writing, I explore how AI and climate policy can avoid deepening extractive, apartheid-like futures and instead open space for democratic, decolonial, and worker-centered transitions.[cite:0]
-          </p>
+<div class="container">
 
-          <div class="hero-meta">
-            <span>Climate & AI</span>
-            <span>Caste & labor</span>
-            <span>Governance & rights</span>
-          </div>
+<header>
 
-          <div class="hero-actions">
-            <a href="#research" class="btn-primary">View research focus</a>
-            <a href="#writing" class="btn-ghost">Read recent writing</a>
-          </div>
-        </div>
+<h1>David Sathuluri</h1>
 
-        <aside class="hero-pattern-card" aria-label="Persian-inspired decorative panel">
-          <div class="arch-frame">
-            <div class="arch-inner">
-              <div class="arch-top">
-                <div class="arch-top-grid"></div>
-                <div class="arch-top-star"></div>
-              </div>
-              <div class="arch-label">Portfolio</div>
-              <div class="arch-title">David Sathuluri</div>
-              <div class="arch-subtitle">Climate Justice & AI Governance</div>
-              <div class="arch-pill-row">
-                <span class="arch-pill">Climate justice</span>
-                <span class="arch-pill">AI governance</span>
-                <span class="arch-pill">Caste & race</span>
-                <span class="arch-pill">Labor rights</span>
-              </div>
-              <div class="arch-footer-note">
-                Research, writing, and policy engagement from the vantage point of
-                marginalized communities, workers, and the global South.
-              </div>
-            </div>
-          </div>
-        </aside>
-      </div>
-    </section>
+<p class="subtitle">
+Researcher | Climate Justice | Technology & Society
+</p>
 
-    <section class="section" id="about">
-      <div class="section-inner">
-        <div class="section-heading">
-          <div class="section-title">About</div>
-          <div class="section-kicker">Background & commitments</div>
-        </div>
-        <div class="text-body">
-          <p>
-            I am a climate justice and AI governance researcher and policy advocate based in New York.[cite:0] My work brings together climate science, critical social theory, and technology studies to understand how AI systems interact with energy transitions, extractive infrastructures, and long histories of caste, race, and colonialism.[cite:0]
-          </p>
-          <p>
-            Trained at Columbia University, I write and collaborate across academic, journalistic, and policy spaces, working with movements and communities to challenge techno-solutionist narratives and insist on justice-centered approaches to climate and digital governance.[cite:0]
-          </p>
-          <div class="pill-row">
-            <span class="pill">Climate justice</span>
-            <span class="pill">AI governance</span>
-            <span class="pill">Caste & race</span>
-            <span class="pill">Labor & automation</span>
-            <span class="pill">Data & human rights</span>
-          </div>
-        </div>
-      </div>
-    </section>
+<nav>
+<a href="#about">About</a>
+<a href="#research">Research</a>
+<a href="#writing">Writing</a>
+<a href="#contact">Contact</a>
+</nav>
 
-    <section class="section" id="research">
-      <div class="section-inner">
-        <div class="section-heading">
-          <div class="section-title">Research focus</div>
-          <div class="section-kicker">Themes & questions</div>
-        </div>
-        <div class="two-column">
-          <div>
-            <div class="list-heading">Core questions</div>
-            <ul>
-              <li><span class="bullet">⯈</span>How do AI and data infrastructures reshape climate and energy transitions, especially in the global South?</li>
-              <li><span class="bullet">⯈</span>In what ways do caste, race, and class hierarchies get reproduced or contested through climate-tech governance?</li>
-              <li><span class="bullet">⯈</span>What forms of labor, care, and extraction are hidden inside “green” and “smart” futures?</li>
-              <li><span class="bullet">⯈</span>How can regulatory, civic, and worker-led interventions pre-empt AI-fuelled climate apartheid?</li>
-            </ul>
-          </div>
-          <div>
-            <div class="list-heading">Areas of work</div>
-            <ul>
-              <li><span class="bullet">◆</span>AI in climate and energy planning, carbon accounting, and climate risk management.</li>
-              <li><span class="bullet">◆</span>Caste, race, and environmental governance in South Asia and the diaspora.</li>
-              <li><span class="bullet">◆</span>Labor, automation, and the politics of “green” and digital transitions.</li>
-              <li><span class="bullet">◆</span>Ethics, regulation, and movements for democratic AI governance.</li>
-            </ul>
-          </div>
-        </div>
-        <div class="highlight-card">
-          <strong>Current work.</strong> I am developing research and public writing on how AI-intensive climate governance risks producing new forms of climate apartheid — and how communities, workers, and regulators can resist these trajectories.[cite:0]
-        </div>
-      </div>
-    </section>
+</header>
 
-    <section class="section" id="writing">
-      <div class="section-inner">
-        <div class="section-heading">
-          <div class="section-title">Writing & essays</div>
-          <div class="section-kicker">Selected publications</div>
-        </div>
-        <div class="section-grid">
-          <div class="entry-list">
-            <article class="entry">
-              <div class="entry-title">
-                How to avoid climate apartheid fueled by A.I.
-              </div>
-              <div class="entry-meta">
-                Essay · Compiler / Academic Commons
-              </div>
-              <p class="entry-desc">
-                An essay and accompanying research that examines how AI-driven climate governance can deepen existing inequalities — and what democratic, justice-centered alternatives might look like.[web:20][web:28]
-              </p>
-              <div class="entry-tags">
-                <span>AI & climate</span><span>Inequality</span><span>Governance</span>
-              </div>
-            </article>
 
-            <article class="entry">
-              <div class="entry-title">
-                Tech, labor, and caste at the climate frontier
-              </div>
-              <div class="entry-meta">
-                Commentary · Various outlets
-              </div>
-              <p class="entry-desc">
-                Reflections on how climate-tech and AI industries rely on casteed and racialized labor, and what it means to build solidarities across workers, movements, and geographies.[web:19][web:24]
-              </p>
-              <div class="entry-tags">
-                <span>Caste</span><span>Labor</span><span>Climate-tech</span>
-              </div>
-            </article>
+<section id="about">
 
-            <article class="entry">
-              <div class="entry-title">
-                Climate justice, data justice
-              </div>
-              <div class="entry-meta">
-                Analysis · Tech Policy Press and others
-              </div>
-              <p class="entry-desc">
-                Articles situating AI and data governance within broader struggles over land, resources, surveillance, and environmental racism.[web:19][web:24]
-              </p>
-              <div class="entry-tags">
-                <span>Data</span><span>Surveillance</span><span>Justice</span>
-              </div>
-            </article>
-          </div>
+<h2>About</h2>
 
-          <aside class="highlight-card">
-            For a fuller list of publications, see my author pages at Tech Policy Press, Compiler, and other outlets, along with selected essays in climate and social justice media.[web:19][web:28][web:24]
-            <br><br>
-            I also write in collaborative formats — from co-authored research to dialogues and roundtables with organizers, technologists, and policy practitioners.
-          </aside>
-        </div>
-      </div>
-    </section>
+<p>
+David Sathuluri is a researcher working at the intersection of climate change, justice, and technology. His work explores how climate governance interacts with social inequality, focusing on caste, race, and structural marginalization.
+</p>
 
-    <section class="section" id="contact">
-      <div class="section-inner">
-        <div class="section-heading">
-          <div class="section-title">Contact & collaboration</div>
-          <div class="section-kicker">Speaking · research · writing</div>
-        </div>
-        <div class="contact-grid">
-          <div>
-            <div class="list-heading">Get in touch</div>
-            <p>
-              I welcome invitations for research collaboration, writing, teaching, and public speaking on climate justice, AI governance, caste and race, and labor rights.
-            </p>
-            <p style="margin-top:0.6rem;">
-              To reach me, please email me with a brief description of your project, timeline, and how you see our work intersecting.
-            </p>
-          </div>
-          <div class="contact-list">
-            <!-- Replace with your preferred links/email -->
-            <a href="mailto:david.sathuluri@columbia.edu ">Email</a>
-            <a href="https://techpolicy.press/author/david-sathuluri" target="_blank" rel="noopener">Tech Policy Press</a>
-            <a href="https://davidsathuluri.journoportfolio.com" target="_blank" rel="noopener">Portfolio</a>
-            <a href="https://www.linkedin.com/in/david-sathuluri" target="_blank" rel="noopener">LinkedIn</a>
-          </div>
-        </div>
-        <div class="footer-note">
-          Replace placeholder links and email with your current details before publishing.
-        </div>
-      </div>
-    </section>
-  </main>
+<p>
+He holds a Master's degree in Climate and Society from Columbia University and works on interdisciplinary approaches to climate policy, urban resilience, and equitable technological transitions.
+</p>
 
-  <footer>
-    <div class="footer-inner">
-      <span>© <span id="year"></span> David Sathuluri</span>
-      <span>Designed with a Persian-inspired night-sky motif</span>
-    </div>
-  </footer>
+</section>
 
-  <script>
-    document.getElementById('year').textContent = new Date().getFullYear();
-  </script>
+
+<section id="research">
+
+<h2>Research Areas</h2>
+
+<div class="research-card">
+<strong>Climate Justice</strong>
+<p>Examining inequalities embedded within climate governance and environmental policy.</p>
+</div>
+
+<div class="research-card">
+<strong>Technology & Climate Governance</strong>
+<p>Studying how AI and emerging technologies shape climate decision-making.</p>
+</div>
+
+<div class="research-card">
+<strong>Urban Climate Futures</strong>
+<p>Research on resilience, climate migration, and urban vulnerability.</p>
+</div>
+
+<div class="research-card">
+<strong>Circular Economy</strong>
+<p>Exploring sustainable systems and green financing strategies for cities.</p>
+</div>
+
+</section>
+
+
+<section id="writing">
+
+<h2>Writing & Essays</h2>
+
+<div class="blog-post">
+<strong>Climate Justice and the Future of Urban Governance</strong>
+<p>Essay exploring climate adaptation and justice in rapidly urbanizing regions.</p>
+</div>
+
+<div class="blog-post">
+<strong>AI and Climate Policy</strong>
+<p>Examining the risks and opportunities of artificial intelligence in climate governance.</p>
+</div>
+
+<div class="blog-post">
+<strong>Climate Inequality and Structural Power</strong>
+<p>Analysis of how social hierarchies influence climate vulnerability.</p>
+</div>
+
+</section>
+
+
+<section id="contact">
+
+<h2>Contact</h2>
+
+<p>Email: your-email@example.com</p>
+
+<p>LinkedIn: linkedin.com/in/davidsathuluri</p>
+
+</section>
+
+
+<footer>
+
+<p>© 2026 David Sathuluri</p>
+
+</footer>
+
+</div>
+
 </body>
 </html>
